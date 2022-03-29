@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <a th:href="@{/produto/cadastrar/}" class="btn btn-secondary">Novo</a>
+    <div class="alert alert-success" th:if="${msg !=null}" th:text="${msg}"></div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+        <tr th:each="prod:${produtos}">
+            <td th:text="${prod.nome}"></td>
+            <td>
+                <a th:href="@{/produto/editar/}+${prod.id}" class="btn btn btn-primary">Editar</a>
+                <a th:href="@{/produto/excluir/}+${prod.id}" class="btn btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div layout:fragment="rodape">
+</div>
+</body>
+</html>

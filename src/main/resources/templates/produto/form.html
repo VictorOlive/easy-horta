@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produtos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <form th:action="@{/produto/cadastrar}" th:object="${produto}" method="post">
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+        </div>
+        <input th:field="*{id}" type="hidden">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input th:field="*{nome}" id="nome" class="form-control">
+        </div>
+
+        <button class="btn btn-success">Cadastrar</button>
+    </form>
+</div>
+<div layout:fragment="rodape">
+</div>
+</body>
+</html>
