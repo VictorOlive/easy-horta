@@ -1,23 +1,13 @@
 package br.com.easyhorta.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_produtor")
-public class Produtor {
+public class Produtor implements Serializable {
 
     @Id
     @SequenceGenerator(name = "produtor", sequenceName = "sq_tb_produtor" , allocationSize = 1)
@@ -25,7 +15,7 @@ public class Produtor {
     @Column(name = "id_produtor")
     private Integer id;
 
-    @Column(name = "ds_email")
+    @Column(name = "ds_email", unique = true)
     private String email;
 
     @Column(name = "nm_Produtor", length = 50)
@@ -44,12 +34,12 @@ public class Produtor {
     private List<Servico> servicos;
 
     //Relacionamento dos produtos
-    @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn(name = "id_produtor"),
-            inverseJoinColumns = @JoinColumn(name = "id_produto"),
-            name = "tb_produtor_produto")
+    @OneToMany(mappedBy = "produtor")
     private List<Produto> produtos;
 
+    //Constructor
+    public Produtor() {
+    }
 
     // --- Getters & Setters
     public Integer getId() {

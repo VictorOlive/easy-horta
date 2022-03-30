@@ -2,17 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Easy Horta</title>
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">EasyHorta</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <style>
+        .navbar-nav >li{
+            margin-left:30px
+        }
+    </style>
 </head>
-<body>
-<!-- As a link -->
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/produto/listar/">EasyHorta</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand" th:href="@{/produto/listar/}"> Produtos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" th:href="@{/produtor/listar/}"> Produtores </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
+<body>
 
 <div class="container">
-    <a th:href="@{/produto/listar/}" class="btn btn-dark"> Produtos </a>
-    <h1>Easy Horta</h1>
     <div layout:fragment="conteudo"></div>
 </div>
 <hr>

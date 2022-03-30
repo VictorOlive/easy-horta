@@ -2,18 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Produtos</title>
+    <title>Meus produtos</title>
 </head>
 <body>
 <div layout:fragment="conteudo">
-    <h1 class="text-center">Produtos</h1>
+    <h1 class="text-center">Meus Produtos</h1>
     <div class="alert alert-success" th:if="${msg !=null}" th:text="${msg}"></div>
     <table class="table">
         <tr>
             <th>Nome</th>
-            <th>Valor</th>
-            <th>Quantidade Disponivel</th>
-            <th>Nome do Produtor</th>
+            <th></th>
         </tr>
         <tr th:each="prod:${produtos}">
             <td th:text="${prod.nome}"></td>
@@ -26,11 +24,6 @@
             </td>
         </tr>
     </table>
-    <div class="container">
-        <div class="text-center">
-            <a th:href="@{/produto/cadastrar/}" class="btn btn-primary">Novo Produto</a>
-        </div>
-    </div>
 </div>
 <div layout:fragment="rodape">
 </div>

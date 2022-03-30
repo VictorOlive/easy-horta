@@ -6,29 +6,25 @@
 </head>
 <body>
 <div layout:fragment="conteudo">
-    <h1 class="text-center">Produtos</h1>
+    <h1 class="text-center">Produtores</h1>
     <div class="alert alert-success" th:if="${msg !=null}" th:text="${msg}"></div>
     <table class="table">
         <tr>
             <th>Nome</th>
-            <th>Valor</th>
-            <th>Quantidade Disponivel</th>
-            <th>Nome do Produtor</th>
+            <th>Email</th>
         </tr>
         <tr th:each="prod:${produtos}">
             <td th:text="${prod.nome}"></td>
-            <td th:text="${prod.valor}"></td>
-            <td th:text="${prod.qtdDisponivel}"></td>
-            <td th:text="${prod.produtor.nome}"></td>
+            <td th:text="${prod.email}"></td>
             <td>
-                <a th:href="@{/produto/editar/}+${prod.id}" class="btn btn btn-primary">Editar</a>
-                <a th:href="@{/produto/excluir/}+${prod.id}" class="btn btn btn-danger">Excluir</a>
+                <a th:href="@{/produtor/cadastrar/produto/}" class="btn btn btn-primary">Novo Produto</a>
+                <a th:href="@{/produtor/listar/produtos/}+${prod.id}" class="btn btn-success">Meus Produtos</a>
             </td>
         </tr>
     </table>
     <div class="container">
         <div class="text-center">
-            <a th:href="@{/produto/cadastrar/}" class="btn btn-primary">Novo Produto</a>
+            <a th:href="@{/produtor/cadastrar/}" class="btn btn-primary">Novo Produtor</a>
         </div>
     </div>
 </div>

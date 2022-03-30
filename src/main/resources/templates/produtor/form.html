@@ -6,8 +6,8 @@
 </head>
 <body>
 <div layout:fragment="conteudo">
-    <h1 class="text-center">Cadastro de Produto</h1>
-    <form th:action="@{/produto/cadastrar}" th:object="${produto}" method="post">
+    <h1 class="text-center">Cadastro de Produtor</h1>
+    <form th:action="@{/produtor/cadastrar}" th:object="${produtor}" method="post">
         <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
             <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
         </div>
@@ -17,17 +17,10 @@
             <input th:field="*{nome}" id="nome" class="form-control">
         </div>
         <div class="form-group">
-            <label for="nome">Valor</label>
-            <input th:field="*{valor}" id="nome" class="form-control">
+            <label for="nome">Email</label>
+            <input th:field="*{email}" id="email" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="nome">Quantidade Disponivel</label>
-            <input th:field="*{qtdDisponivel}" id="qtdDisponivel" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="nome">ID do Produtor</label>
-            <input th:field="*{produtor.id}" id="produtor.id" class="form-control">
-        </div>
+
         <div class="form-group">
             <button class="btn btn-success">Cadastrar</button>
         </div>

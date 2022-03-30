@@ -4,14 +4,7 @@ import com.sun.istack.NotNull;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_produto")
@@ -26,9 +19,16 @@ public class Produto {
     @Column(name = "nm_produto", nullable = false)
     private String nome;
 
+    @Column(name = "nr_valor", nullable = false)
+    private Float valor;
+
+    @Column(name = "nr_qtd_disponivel", nullable = false)
+    private Integer qtdDisponivel;
+
     //Mapeamento bidirecional
-    @ManyToMany(mappedBy = "produtos")
-    private List<Produtor> produtores;
+    @ManyToOne
+    @JoinColumn(name = "id_produtor")
+    private Produtor produtor;
 
     // --- Getters & Setters
     public Integer getId() {
@@ -47,11 +47,27 @@ public class Produto {
         this.nome = nome;
     }
 
-    public List<Produtor> getProdutores() {
-        return this.produtores;
+    public Produtor getProdutor() {
+        return produtor;
     }
 
-    public void setProdutores(List<Produtor> produtores) {
-        this.produtores = produtores;
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
+    }
+
+    public Float getValor() {
+        return valor;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
+
+    public Integer getQtdDisponivel() {
+        return qtdDisponivel;
+    }
+
+    public void setQtdDisponivel(Integer qtdDisponivel) {
+        this.qtdDisponivel = qtdDisponivel;
     }
 }

@@ -22,12 +22,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
-    @Autowired
-    private ProdutorRepository produtorRepository;
-
     @GetMapping("cadastrar")
     public String abrirFormulario(Produto produto, Model model){
-        model.addAttribute("categorias", produtorRepository.findAll());
+        model.addAttribute("categorias", repository.findAll());
         return "produto/form";
     }
 
